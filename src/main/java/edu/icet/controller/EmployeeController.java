@@ -10,8 +10,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/emp-controller")
-//http://localhost:8080/emp-controller/add-employee
 @RequiredArgsConstructor
+@CrossOrigin
 public class EmployeeController {
     final EmployeeService service;
 
@@ -21,8 +21,6 @@ public class EmployeeController {
         service.addEmployee(employee);
 
     }
-
-
 
     @GetMapping("get-all")
     public List<Employee> getAll(){
@@ -35,8 +33,6 @@ public class EmployeeController {
         service.deleteEmployeeById(id);
         return "Deleted";
     }
-
-
 
     @PutMapping("/update-employee")
     public void updateEmployee(@RequestBody Employee employee){
