@@ -1,19 +1,23 @@
 package edu.icet.dto;
 
-import edu.icet.service.EmployeeService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@RestController
-@RequestMapping("/emp-controller")
-@RequiredArgsConstructor
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Employee {
-    final EmployeeService service;
+    private Long id;
+    private String Name;
+    private String Email;
+    private String Department;
+    private SimpleDateFormat CreatedAt;
+    private SimpleDateFormat UpdatedAt;
 
-    @PostMapping("add-employee")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void addEmployee(@RequestBody Employee employee){
-        service.addEmployee(employee);
-    }
 }
